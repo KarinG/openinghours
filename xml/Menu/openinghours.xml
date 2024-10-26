@@ -6,4 +6,10 @@
     <title>InfoPage</title>
     <access_arguments>access CiviCRM</access_arguments>
   </item>
+  <item>
+    <path>civicrm/admin/setting/openinghours</path>
+    <title>Opening Hours Settings</title>
+    <page_callback>CRM_Admin_Form_Generic</page_callback>
+    <access_arguments>administer CiviCRM</access_arguments>
+    </item>
 </menu>
