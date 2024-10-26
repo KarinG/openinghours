@@ -55,11 +55,10 @@ function openinghours_civicrm_buildForm($formName, &$form) {
     // what time is it?
     $rightnow = date('H:i:s', time());
     \Drupal::logger('openinghours')->info(print_r($rightnow, true));
-    // retrieve from settings - for now:
-    $opening = "10:00";
-    $closing = "18:00";
-    Civi::settings()->get('opening');
-    Civi::settings()->get('closing');
+    // $opening = "10:00";
+    // $closing = "18:00";
+    $opening = \Civi::settings()->get('openinghours_opening');
+    $closing = \Civi::settings()->get('openinghours_closing');
     // determine if we're open for businnes
     if ($rightnow > $opening && $rightnow < $closing) {
       \Drupal::logger('openinghours')->info('Open for business');
