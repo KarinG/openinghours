@@ -39,7 +39,7 @@ function openinghours_civicrm_buildForm($formName, &$form) {
     \Drupal::logger('openinghours')->info(print_r($rightnow, true));
     // retrieve from settings - for now:
     $opening = "10:00";
-    $closing = "15:00";
+    $closing = "18:00";
     // determine if we're open for businnes
     if ($rightnow > $opening && $rightnow < $closing) {
       \Drupal::logger('openinghours')->info('Open for business');
