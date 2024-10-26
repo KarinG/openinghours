@@ -45,6 +45,8 @@ function openinghours_civicrm_buildForm($formName, &$form) {
       \Drupal::logger('openinghours')->info('Open for business');
     } else {
       \Drupal::logger('openinghours')->info('We are closed');
+      // Redirect:
+      CRM_Utils_System::redirect(CRM_Utils_System::url('civicrm/openinghours/infopage'));
     }
   }
 }
