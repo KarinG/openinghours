@@ -31,6 +31,24 @@ function openinghours_civicrm_enable(): void {
   _openinghours_civix_civicrm_enable();
 }
 
+/**
+ * Implements hook_civicrm_navigationMenu().
+ */
+function openinghours_civicrm_navigationMenu(&$menu) {
+  _openinghours_civix_insert_navigation_menu($menu, 'Administer/System Settings', [
+    'label' => E::ts('Opening Hours Settings'),
+    'name' => 'openinghours_settings',
+    'url' => 'civicrm/admin/setting/openinghours',
+    'permission' => 'administer CiviCRM',
+    'operator' => 'OR',
+    'separator' => 0,
+  ]);
+  _openinghours_civix_navigationMenu($menu);
+}
+
+/**
+ * Implements hook_civicrm_buildForm().
+ */
 function openinghours_civicrm_buildForm($formName, &$form) {
   if ($formName === 'CRM_Contribute_Form_Contribution_Main') {
     // \Drupal::logger('openinghours')->info(print_r($form, true));
@@ -40,6 +58,8 @@ function openinghours_civicrm_buildForm($formName, &$form) {
     // retrieve from settings - for now:
     $opening = "10:00";
     $closing = "18:00";
+    Civi::settings()->get('opening');
+    Civi::settings()->get('closing');
     // determine if we're open for businnes
     if ($rightnow > $opening && $rightnow < $closing) {
       \Drupal::logger('openinghours')->info('Open for business');
