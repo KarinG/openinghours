@@ -32,7 +32,7 @@ function openinghours_civicrm_enable(): void {
 }
 
 function openinghours_civicrm_buildForm($formName, &$form) {
-  if ($formName === 'CRM_Contribute_Form_Contribution') {
+  if ($formName === 'CRM_Contribute_Form_Contribution_Main') {
     \Drupal::logger('openinghours')->info(print_r($form, true));
     // what time is it?
     $datetime = date('m/d/Y h:i:s a', time());
