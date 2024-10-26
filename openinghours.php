@@ -33,13 +33,19 @@ function openinghours_civicrm_enable(): void {
 
 function openinghours_civicrm_buildForm($formName, &$form) {
   if ($formName === 'CRM_Contribute_Form_Contribution_Main') {
-    \Drupal::logger('openinghours')->info(print_r($form, true));
+    // \Drupal::logger('openinghours')->info(print_r($form, true));
     // what time is it?
-    $datetime = date('m/d/Y h:i:s a', time());
-    \Drupal::logger('openinghours')->info(print_r($datetime, true));
+    $rightnow = date('h:i:s H', time());
+    \Drupal::logger('openinghours')->info(print_r($rightnow, true));
+    // 10/26/2024 05:39:09 pm
     // retrieve from settings - for now:
     $opening = "10:00";
     $closing = "15:00";
     // determine if we're open for businnes
+    if ($rightnow > $opening && $rightnow < $closing) {
+      \Drupal::logger('openinghours')->info('Open for business');
+    } else {
+        \Drupal::logger('openinghours')->info('We are closed');
+    }
   }
 }
