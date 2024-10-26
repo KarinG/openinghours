@@ -35,9 +35,8 @@ function openinghours_civicrm_buildForm($formName, &$form) {
   if ($formName === 'CRM_Contribute_Form_Contribution_Main') {
     // \Drupal::logger('openinghours')->info(print_r($form, true));
     // what time is it?
-    $rightnow = date('h:i:s H', time());
+    $rightnow = date('H:i:s', time());
     \Drupal::logger('openinghours')->info(print_r($rightnow, true));
-    // 10/26/2024 05:39:09 pm
     // retrieve from settings - for now:
     $opening = "10:00";
     $closing = "15:00";
